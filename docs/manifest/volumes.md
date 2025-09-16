@@ -10,7 +10,6 @@ This replaces imperative `docker volume create` commands with a single source of
 - **Declarative management**: define desired volumes once; Dockform creates any that are missing.
 - **Compose-friendly**: use Dockform-managed volumes as `external` volumes in `docker compose` files.
 - **Idempotent**: safe to run repeatedly; only missing volumes are created.
-- **Scoped by identifier**: Dockform labels created volumes with `io.dockform.identifier=<docker.identifier>` and only manages labeled ones.
 
 ## Defining volumes in the manifest
 
@@ -74,7 +73,6 @@ In this example, the `traefik_config` volume will be created if missing, even if
   - Labels volumes with `io.dockform.identifier=<docker.identifier>`.
   - Proceeds to sync filesets and run `docker compose up` for applications.
 - **destroy**: discovers all labeled resources for the current identifier and removes them, including volumes (fileset volumes first, then standalone).
-- **prune**: removes labeled resources that are not in your current manifest. For volumes, any labeled volume not used by a current fileset is removed.
 
 Notes:
 - Dockform checks for existing volumes by name; it will not duplicate or rename volumes.
