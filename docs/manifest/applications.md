@@ -50,7 +50,7 @@ applications:
 - `profiles` (optional): Compose profiles to enable.
 - `env-file` (optional): additional env files for Compose (relative to `root`).
 - `environment` (optional): per-app env definitions, with `files` and `inline`.
-- `secrets.sops` (optional): per-app SOPS-encrypted `.env` files for inline injection at runtime.
+- `secrets.sops` (optional): per-app SOPS-encrypted `.env` files for inline injection at runtime. *(See [Secrets](secrets))*
 - `project.name` (optional): Compose project name override.
 
 ## Environment merging and precedence
