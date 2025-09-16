@@ -11,11 +11,11 @@ hero:
     dark: /img/logo_dark.svg
   actions:
     - theme: brand
-      text: Install (v0.1.2)
-      link: /introduction/getting_started
-    - theme: alt
       text: Learn More
       link: /introduction/what_is_dockform
+    - theme: alt
+      text: Install
+      link: /introduction/getting_started
 
 features:
   - title: Declarative by design

@@ -31,7 +31,7 @@ export default {
             { text: 'Overview',         link: '/manifest/overview' },
             { text: 'Interpolation',    link: '/manifest/interpolation' },
             { text: 'Secrets Workflow', link: '/manifest/secrets' },
-            { text: 'Managed Volumes',  link: '/manifest/volumes' },
+            { text: 'Volumes',          link: '/manifest/volumes' },
             { text: 'Networks',         link: '/manifest/networks' },
             { text: 'Filesets',         link: '/manifest/filesets' },
             { text: 'Applications',     link: '/manifest/applications' },
