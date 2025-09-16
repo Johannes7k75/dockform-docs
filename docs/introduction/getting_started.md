@@ -21,7 +21,7 @@ Before you begin, make sure you have the following installed:
 On macOS or Linux, you can install Dockform using [Homebrew](https://brew.sh/):
 
 ```sh
-brew tap gcstr/homebrew-dockform
+brew tap gcstr/dockform
 brew install dockform
 ```
 
