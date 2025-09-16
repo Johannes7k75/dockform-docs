@@ -21,6 +21,6 @@ Work with the manifest file
 
 ### SEE ALSO
 
-* [dockform](/docs/cli/dockform)	 - Manage Docker Compose projects declaratively
-* [dockform manifest render](/docs/cli/dockform_manifest_render)	 - Render the manifest with environment variables interpolated
+* [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
+* [dockform manifest render](/cli/dockform_manifest_render)	 - Render the manifest with environment variables interpolated
 

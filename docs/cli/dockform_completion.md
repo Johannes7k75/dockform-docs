@@ -27,9 +27,9 @@ See each sub-command's help for details on how to use the generated script.
 
 ### SEE ALSO
 
-* [dockform](/docs/cli/dockform)	 - Manage Docker Compose projects declaratively
-* [dockform completion bash](/docs/cli/dockform_completion_bash)	 - Generate the autocompletion script for bash
-* [dockform completion fish](/docs/cli/dockform_completion_fish)	 - Generate the autocompletion script for fish
-* [dockform completion powershell](/docs/cli/dockform_completion_powershell)	 - Generate the autocompletion script for powershell
-* [dockform completion zsh](/docs/cli/dockform_completion_zsh)	 - Generate the autocompletion script for zsh
+* [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
+* [dockform completion bash](/cli/dockform_completion_bash)	 - Generate the autocompletion script for bash
+* [dockform completion fish](/cli/dockform_completion_fish)	 - Generate the autocompletion script for fish
+* [dockform completion powershell](/cli/dockform_completion_powershell)	 - Generate the autocompletion script for powershell
+* [dockform completion zsh](/cli/dockform_completion_zsh)	 - Generate the autocompletion script for zsh
 

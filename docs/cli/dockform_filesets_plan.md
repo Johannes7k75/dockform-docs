@@ -26,5 +26,5 @@ dockform filesets plan [flags]
 
 ### SEE ALSO
 
-* [dockform filesets](/docs/cli/dockform_filesets)	 - Fileset-only operations
+* [dockform filesets](/cli/dockform_filesets)	 - Fileset-only operations
 

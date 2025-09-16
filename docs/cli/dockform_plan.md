@@ -26,5 +26,5 @@ dockform plan [flags]
 
 ### SEE ALSO
 
-* [dockform](/docs/cli/dockform)	 - Manage Docker Compose projects declaratively
+* [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
 

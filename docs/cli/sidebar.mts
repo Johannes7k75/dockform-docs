@@ -7,96 +7,100 @@ export default [
     "items": [
       {
         "text": "dockform",
-        "link": "/docs/cli/dockform",
+        "link": "/cli/dockform",
         "items": [
           {
             "text": "apply",
-            "link": "/docs/cli/dockform_apply"
+            "link": "/cli/dockform_apply"
           },
           {
             "text": "destroy",
-            "link": "/docs/cli/dockform_destroy"
+            "link": "/cli/dockform_destroy"
           },
           {
             "text": "filesets",
-            "link": "/docs/cli/dockform_filesets",
+            "link": "/cli/dockform_filesets",
             "items": [
               {
                 "text": "apply",
-                "link": "/docs/cli/dockform_filesets_apply"
+                "link": "/cli/dockform_filesets_apply"
               },
               {
                 "text": "plan",
-                "link": "/docs/cli/dockform_filesets_plan"
+                "link": "/cli/dockform_filesets_plan"
               }
             ],
             "collapsed": true
           },
           {
             "text": "init",
-            "link": "/docs/cli/dockform_init"
+            "link": "/cli/dockform_init"
           },
           {
             "text": "manifest",
-            "link": "/docs/cli/dockform_manifest",
+            "link": "/cli/dockform_manifest",
             "items": [
               {
                 "text": "render",
-                "link": "/docs/cli/dockform_manifest_render"
+                "link": "/cli/dockform_manifest_render"
               }
             ],
             "collapsed": true
           },
           {
             "text": "plan",
-            "link": "/docs/cli/dockform_plan"
+            "link": "/cli/dockform_plan"
           },
           {
             "text": "secrets",
-            "link": "/docs/cli/dockform_secrets",
+            "link": "/cli/dockform_secrets",
             "items": [
               {
                 "text": "create",
-                "link": "/docs/cli/dockform_secrets_create"
+                "link": "/cli/dockform_secrets_create"
               },
               {
                 "text": "decrypt",
-                "link": "/docs/cli/dockform_secrets_decrypt"
+                "link": "/cli/dockform_secrets_decrypt"
               },
               {
                 "text": "edit",
-                "link": "/docs/cli/dockform_secrets_edit"
+                "link": "/cli/dockform_secrets_edit"
               },
               {
                 "text": "rekey",
-                "link": "/docs/cli/dockform_secrets_rekey"
+                "link": "/cli/dockform_secrets_rekey"
               }
             ],
             "collapsed": true
           },
           {
             "text": "validate",
-            "link": "/docs/cli/dockform_validate"
+            "link": "/cli/dockform_validate"
+          },
+          {
+            "text": "version",
+            "link": "/cli/dockform_version"
           },
           {
             "text": "completion",
-            "link": "/docs/cli/dockform_completion",
+            "link": "/cli/dockform_completion",
             "items": [
               {
                 "text": "bash",
-                "link": "/docs/cli/dockform_completion_bash"
+                "link": "/cli/dockform_completion_bash"
               },
               {
                 "text": "fish",
-                "link": "/docs/cli/dockform_completion_fish"
+                "link": "/cli/dockform_completion_fish"
               },
               {
                 "text": "powershell",
-                "link": "/docs/cli/dockform_completion_powershell"
+                "link": "/cli/dockform_completion_powershell"
               },
               {
                 "text": "zsh",
-                "link": "/docs/cli/dockform_completion_zsh"
+                "link": "/cli/dockform_completion_zsh"
               }
             ],
             "collapsed": true

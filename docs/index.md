@@ -12,10 +12,10 @@ hero:
   actions:
     - theme: brand
       text: Install (v0.1.2)
-      link: /docs/introduction/getting_started
+      link: /introduction/getting_started
     - theme: alt
       text: Learn More
-      link: /docs/introduction/what_is_dockform
+      link: /introduction/what_is_dockform
 
 features:
   - title: Declarative by design
@@ -40,4 +40,6 @@ features:
       width: 25px
     details: Version-control both apps and infrastructure resources together
 ---
+
+
 

@@ -21,7 +21,7 @@ Fileset-only operations
 
 ### SEE ALSO
 
-* [dockform](/docs/cli/dockform)	 - Manage Docker Compose projects declaratively
-* [dockform filesets apply](/docs/cli/dockform_filesets_apply)	 - Apply fileset diffs only
-* [dockform filesets plan](/docs/cli/dockform_filesets_plan)	 - Show fileset diffs only
+* [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
+* [dockform filesets apply](/cli/dockform_filesets_apply)	 - Apply fileset diffs only
+* [dockform filesets plan](/cli/dockform_filesets_plan)	 - Show fileset diffs only
 

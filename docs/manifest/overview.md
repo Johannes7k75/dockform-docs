@@ -146,10 +146,10 @@ Secrets can also be global or app-specific. Root-level secrets are exposed to al
 
 > In case of conflict, application-specific secrets override global ones.
 
-Secrets are managed with [SOPS](https://github.com/getsops/sops) and [Age](https://github.com/FiloSottile/age). An Age `key_file` must be available either through [variable interpolation](/docs/manifest/interpolation) or a direct path.
+Secrets are managed with [SOPS](https://github.com/getsops/sops) and [Age](https://github.com/FiloSottile/age). An Age `key_file` must be available either through [variable interpolation](/manifest/interpolation) or a direct path.
 
 ::: tip
-Learn more in [Secrets Workflow](/docs/manifest/secrets.md).
+Learn more in [Secrets Workflow](/manifest/secrets.md).
 :::
 
 ::: code-group

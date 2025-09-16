@@ -25,5 +25,5 @@ dockform manifest render [flags]
 
 ### SEE ALSO
 
-* [dockform manifest](/docs/cli/dockform_manifest)	 - Work with the manifest file
+* [dockform manifest](/cli/dockform_manifest)	 - Work with the manifest file
 

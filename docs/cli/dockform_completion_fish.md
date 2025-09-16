@@ -41,5 +41,5 @@ dockform completion fish [flags]
 
 ### SEE ALSO
 
-* [dockform completion](/docs/cli/dockform_completion)	 - Generate the autocompletion script for the specified shell
+* [dockform completion](/cli/dockform_completion)	 - Generate the autocompletion script for the specified shell
 

@@ -57,5 +57,5 @@ applications:
 :::
 
 ::: tip
-For secrets managed directly by Dockform, see [Secrets Workflow](/docs/manifest/secrets)
+For secrets managed directly by Dockform, see [Secrets Workflow](/manifest/secrets)
 :::

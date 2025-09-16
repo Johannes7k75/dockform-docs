@@ -66,4 +66,4 @@ Each application (`app1`, `app2`, `app3`) has its own folder containing one or m
 
 ## Next Steps
 
-To learn more about the manifest file and its configuration options, see [The Manifest File](/docs/manifest/overview).
+To learn more about the manifest file and its configuration options, see [The Manifest File](/manifest/overview).

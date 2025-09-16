@@ -1,21 +1,19 @@
 ---
-title: Dockform Apply
+title: Dockform Version
 ---
 
-# `dockform apply`
+# `dockform version`
 
-Apply the desired state
+Show detailed version information
 
 ```
-dockform apply [flags]
+dockform version [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help                help for apply
-      --sequential          Use sequential processing instead of the default parallel processing (slower but uses less CPU and Docker daemon resources)
-      --skip-confirmation   Skip confirmation prompt and apply immediately
+  -h, --help   help for version
 ```
 
 ### Options inherited from parent commands

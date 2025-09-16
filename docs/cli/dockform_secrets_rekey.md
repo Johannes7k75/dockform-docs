@@ -25,5 +25,5 @@ dockform secrets rekey [flags]
 
 ### SEE ALSO
 
-* [dockform secrets](/docs/cli/dockform_secrets)	 - Manage SOPS secrets
+* [dockform secrets](/cli/dockform_secrets)	 - Manage SOPS secrets
 
