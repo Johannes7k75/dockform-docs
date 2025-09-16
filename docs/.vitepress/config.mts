@@ -1,4 +1,5 @@
 import cliSidebar from '../cli/sidebar.mts'
+import { groupIconMdPlugin, groupIconVitePlugin, localIconLoader } from 'vitepress-plugin-group-icons'
 
 export default {
   title: 'Dockform',
@@ -6,6 +7,22 @@ export default {
   description: 'IaC for Docker Compose',
   // cleanUrls: true,
   head: [['link', { rel: 'icon', href: '/img/favicon_adaptive.svg', type: 'image/svg+xml' }]],
+  markdown: {
+    config(md) {
+      md.use(groupIconMdPlugin)
+    }
+  },
+  vite: {
+    plugins: [
+      groupIconVitePlugin({
+        customIcon: {
+          'dockform.yaml': localIconLoader(import.meta.url, '../public/img/icon_adaptive.svg'),
+          'dockform': localIconLoader(import.meta.url, '../public/img/icon_adaptive.svg'),
+          'docker': 'vscode-icons:file-type-docker',
+        },
+      })
+    ]
+  },
   themeConfig: {
     logo: {
       light: '/img/logo_light.svg',

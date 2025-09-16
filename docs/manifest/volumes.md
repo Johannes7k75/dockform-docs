@@ -16,9 +16,7 @@ This replaces imperative `docker volume create` commands with a single source of
 
 Declare top-level volumes under `volumes:`. Keys are the volume names that will be created on the Docker host.
 
-```yaml
-# dockform.yml
-
+```yaml [dockform.yaml]
 docker:
   context: default
   identifier: staging
@@ -35,10 +33,7 @@ volumes:
 
 Dockform does not inject volumes into compose files. Instead, you reference volumes that Dockform manages as `external` in your compose files and bind them to services.
 
-::: code-group
-
-```yaml [config.js]
-# docker-compose.yaml
+```yaml [docker-compose.yaml]
 services:
   db:
     image: postgres:16
@@ -52,8 +47,6 @@ volumes:
     # name: "staging-db-data"
 ```
 
-:::
-
 - If you set `volumes.db-data.external: true`, Docker Compose will expect a pre-existing Docker volume named `db-data` (or the provided `name:`), which Dockform ensures exists during `apply`.
 - You may use environment expansion in compose for the `name:` field if needed (e.g., `name: "df_${DOCKFORM_RUN_ID}_vol"`).
 
@@ -61,7 +54,7 @@ volumes:
 
 A `fileset` keeps a local folder in sync with a path inside a Docker volume. When a fileset targets a volume that does not yet exist, Dockform creates that volume automatically.
 
-```yaml
+```yaml [dockform.yaml]
 filesets:
   traefik:
     source: traefik/config
@@ -89,9 +82,9 @@ Notes:
 
 ## End-to-end example
 
-```yaml
-# dockform.yml
+::: code-group
 
+```yaml [dockform.yaml]
 docker:
   context: default
   identifier: staging
@@ -110,8 +103,9 @@ filesets:
     source: ./config
     target_volume: app-config
     target_path: /etc/app
+```
 
-# docker-compose.yaml (under ./app)
+```yaml [app/docker-compose.yaml]
 services:
   web:
     image: nginx:alpine
@@ -126,12 +120,7 @@ volumes:
     external: true
 ```
 
+:::
+
 - Run `dockform plan` to see the pending volume creations.
 - Run `dockform apply` to create volumes, sync files, and start services.
-
-## Troubleshooting
-
-- If compose reports the volume is missing, ensure:
-  - The name in compose `volumes:` matches the manifest name (or the explicit `name:` value).
-  - You ran `dockform apply` with the same `docker.identifier` used by the running services.
-  - The Docker context set in `docker.context` matches your target.
