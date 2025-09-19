@@ -55,6 +55,9 @@ applications:
 
 networks:
   app-network:
+    driver: bridge
+    options:
+      com.docker.network.bridge.enable_icc: "false"
 
 filesets:
   static-assets:

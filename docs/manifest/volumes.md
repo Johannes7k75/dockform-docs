@@ -13,7 +13,7 @@ This replaces imperative `docker volume create` commands with a single source of
 
 ## Defining volumes in the manifest
 
-Declare top-level volumes under `volumes:`. Keys are the volume names that will be created on the Docker host.
+Declare top-level volumes under `volumes:`. Keys are the volume names that will be created on the Docker host. For networks (with driver/options and drift handling), see [Networks](/manifest/networks.md).
 
 ```yaml [dockform.yaml]
 docker:
