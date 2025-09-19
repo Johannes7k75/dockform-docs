@@ -41,6 +41,10 @@ features:
     details: Version-control both apps and infrastructure resources together
 ---
 
-
+<p align="center" style="font-size: 0.8em; line-height: 1.5em; margin-top: 7em">
+Docker is a registered trademark of Docker, Inc.
+<br>
+Dockform is not affiliated with Docker, Inc. in any way.
+</p>
 
 
