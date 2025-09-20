@@ -23,6 +23,7 @@ Manage Docker Compose projects declaratively
 * [dockform init](/cli/dockform_init)	 - Create a template dockform.yml configuration file
 * [dockform manifest](/cli/dockform_manifest)	 - Work with the manifest file
 * [dockform plan](/cli/dockform_plan)	 - Show the plan to reach the desired state
+* [dockform volume](/cli/dockform_volume)	 - Manage Docker volumes (snapshots, restore)
 * [dockform secrets](/cli/dockform_secrets)	 - Manage SOPS secrets
 * [dockform validate](/cli/dockform_validate)	 - Validate configuration and environment
 * [dockform version](/cli/dockform_version)	 - Show detailed version information

@@ -74,6 +74,28 @@ In this example, the `traefik_config` volume will be created if missing, even if
   - Proceeds to sync filesets and run `docker compose up` for applications.
 - **destroy**: discovers all labeled resources for the current identifier and removes them, including volumes (fileset volumes first, then standalone).
 
+### Snapshots and restore
+
+Dockform offers portable volume snapshots stored next to your manifest by default:
+
+#### Snapshot
+
+```sh
+$ dockform volume snapshot <volume>
+```
+
+creates `.tar.zst` plus a JSON sidecar under `.dockform/snapshots/<volume>/...`.
+
+#### Restore
+
+```sh
+dockform volume restore <volume> <snapshot>`
+```
+
+restores into an existing, empty volume (use `--force` to clear, `--stop-containers` to stop users).
+
+Snapshots are created with `tar | zstd` in a helper container, streaming data back to your machine—works for local and remote Docker contexts. Metadata includes a short spec hash (driver/options/labels), checksum and quick stats to validate and pick the right snapshot.
+
 Notes:
 - Dockform checks for existing volumes by name; it will not duplicate or rename volumes.
 - Dockform only removes volumes that carry the Dockform label for the active identifier.

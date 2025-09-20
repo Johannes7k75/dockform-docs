@@ -48,6 +48,21 @@ export default [
             "collapsed": true
           },
           {
+            "text": "volume",
+            "link": "/cli/dockform_volume",
+            "items": [
+              {
+                "text": "snapshot",
+                "link": "/cli/dockform_volume_snapshot"
+              },
+              {
+                "text": "restore",
+                "link": "/cli/dockform_volume_restore"
+              }
+            ],
+            "collapsed": true
+          },
+          {
             "text": "plan",
             "link": "/cli/dockform_plan"
           },
