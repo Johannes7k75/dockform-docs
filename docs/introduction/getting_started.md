@@ -20,7 +20,7 @@ Before you begin, make sure you have the following installed:
 
 On macOS or Linux, you can install Dockform using [Homebrew](https://brew.sh/):
 
-```sh [terminal ~vscode-icons:file-type-shell~]
+```sh [shell ~vscode-icons:file-type-shell~]
 $ brew tap gcstr/dockform
 $ brew install dockform
 ```
@@ -36,7 +36,7 @@ Download the binary for your platform, extract it, and place it somewhere in you
 
 Dockform includes a convenience command to scaffold a new project:
 
-```sh [terminal ~vscode-icons:file-type-shell~]
+```sh [shell ~vscode-icons:file-type-shell~]
 dockform init
 ```
 

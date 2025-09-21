@@ -22,7 +22,7 @@ You need both **SOPS** and **Age** installed:
 
 Generate a new Age key pair and store it locally:
 
-```sh [terminal ~vscode-icons:file-type-shell~]
+```sh [shell ~vscode-icons:file-type-shell~]
 $ age-keygen -o ~/.config/sops/age/keys.txt
 ```
 
@@ -40,7 +40,7 @@ sops:
 
 Use Dockform to scaffold a new secrets file:
 
-```sh [terminal ~vscode-icons:file-type-shell~]
+```sh [shell ~vscode-icons:file-type-shell~]
 $ dockform secrets create secrets.env
 # A template encrypted dotenv file will be created
 ```
@@ -49,7 +49,7 @@ $ dockform secrets create secrets.env
 
 Open the file securely with your `$EDITOR`. Dockform decrypts it on the fly and re-encrypts on save:
 
-```sh [terminal ~vscode-icons:file-type-shell~]
+```sh [shell ~vscode-icons:file-type-shell~]
 $ dockform secrets edit secrets.env
 ```
 
