@@ -1,15 +1,15 @@
 ---
-title: Dockform Filesets
+title: Dockform Compose
 ---
 
-# `dockform filesets`
+# `dockform compose`
 
-Fileset-only operations
+Work with docker compose files for applications
 
 ### Options
 
 ```
-  -h, --help   help for filesets
+  -h, --help   help for compose
 ```
 
 ### Options inherited from parent commands
@@ -22,6 +22,5 @@ Fileset-only operations
 ### SEE ALSO
 
 * [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
-* [dockform filesets apply](/cli/dockform_filesets_apply)	 - Apply fileset diffs only
-* [dockform filesets plan](/cli/dockform_filesets_plan)	 - Show fileset diffs only
+* [dockform compose render](/cli/dockform_compose_render)	 - Render an application's docker compose config fully resolved
 

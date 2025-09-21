@@ -14,23 +14,19 @@ export default [
             "link": "/cli/dockform_apply"
           },
           {
-            "text": "destroy",
-            "link": "/cli/dockform_destroy"
-          },
-          {
-            "text": "filesets",
-            "link": "/cli/dockform_filesets",
+            "text": "compose",
+            "link": "/cli/dockform_compose",
             "items": [
               {
-                "text": "apply",
-                "link": "/cli/dockform_filesets_apply"
-              },
-              {
-                "text": "plan",
-                "link": "/cli/dockform_filesets_plan"
+                "text": "render",
+                "link": "/cli/dockform_compose_render"
               }
             ],
             "collapsed": true
+          },
+          {
+            "text": "destroy",
+            "link": "/cli/dockform_destroy"
           },
           {
             "text": "init",
@@ -43,21 +39,6 @@ export default [
               {
                 "text": "render",
                 "link": "/cli/dockform_manifest_render"
-              }
-            ],
-            "collapsed": true
-          },
-          {
-            "text": "volume",
-            "link": "/cli/dockform_volume",
-            "items": [
-              {
-                "text": "snapshot",
-                "link": "/cli/dockform_volume_snapshot"
-              },
-              {
-                "text": "restore",
-                "link": "/cli/dockform_volume_restore"
               }
             ],
             "collapsed": true
@@ -96,6 +77,21 @@ export default [
           {
             "text": "version",
             "link": "/cli/dockform_version"
+          },
+          {
+            "text": "volume",
+            "link": "/cli/dockform_volume",
+            "items": [
+              {
+                "text": "restore",
+                "link": "/cli/dockform_volume_restore"
+              },
+              {
+                "text": "snapshot",
+                "link": "/cli/dockform_volume_snapshot"
+              }
+            ],
+            "collapsed": true
           },
           {
             "text": "completion",

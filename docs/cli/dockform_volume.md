@@ -6,10 +6,6 @@ title: Dockform Volume
 
 Manage Docker volumes (snapshots, restore)
 
-```
-dockform volume [flags]
-```
-
 ### Options
 
 ```
@@ -25,8 +21,7 @@ dockform volume [flags]
 
 ### SEE ALSO
 
-* [dockform](/cli/dockform)   - Manage Docker Compose projects declaratively
-* [dockform volume snapshot](/cli/dockform_volume_snapshot)   - Create a snapshot of a Docker volume to local storage
-* [dockform volume restore](/cli/dockform_volume_restore)   - Restore a snapshot into a Docker volume
-
+* [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
+* [dockform volume restore](/cli/dockform_volume_restore)	 - Restore a snapshot into a Docker volume
+* [dockform volume snapshot](/cli/dockform_volume_snapshot)	 - Create a snapshot of a Docker volume to local storage
 
