@@ -4,6 +4,7 @@
 export default [
   {
     "text": "CLI Reference",
+    "collapsed": true,
     "items": [
       {
         "text": "dockform",

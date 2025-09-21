@@ -52,7 +52,13 @@ export default {
             { text: 'Networks',         link: '/manifest/networks' },
             { text: 'Filesets',         link: '/manifest/filesets' },
             { text: 'Applications',     link: '/manifest/applications' },
-            { text: 'Best Practices',   link: '/manifest/best_practices' }
+          ]
+        },
+        {
+          text: 'More',
+          items: [
+            { text: 'Best Practices',   link: '/more/best_practices' },
+            { text: 'Debugging',        link: '/more/debugging' }
           ]
         },
         ...cliSidebar
