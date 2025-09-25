@@ -64,6 +64,7 @@ filesets:
     source: ./assets
     target_volume: app-data
     target_path: /var/www/html/assets
+    apply_mode: hot
     restart_services:
       - nginx
     exclude:
@@ -275,14 +276,24 @@ The name of the volume to contain the files. A new volume will be created unless
 Absolute path inside the container where the files will be available. Root (`/`) is not allowed.
 
 ### `restart_services` <Badge type="tip" text="optional" />
-* Type: `Array`  
-* Default: `null`
+* Type: `Array | String`  
+* Default: `null` (no restarts)
 
-Array of service names that will be restarted if this fileset changes.
+Controls which services are acted on after a fileset changes:
+- List: `[serviceA, serviceB]` → explicitly target these services
+- String: `"attached"` → auto-discover services that mount `target_volume`
 
-::: tip
-**Applications** are Dockform concepts and may include many **services** (as defined in Docker Compose files).
-:::
+In hot mode, targets are restarted after sync. In cold mode, targets are stopped before sync and started after.
+
+:::: tip
+If no targets are resolved (omitted or none attached), Dockform proceeds without restarts.
+::::
+
+### `apply_mode` <Badge type="tip" text="optional" />
+* Type: `String`  
+* Default: `"hot"`
+
+Controls how file changes are applied. Can be `"hot"` (sync files while containers run, then restart targets if any) or `"cold"` (stop targets, sync files, then start targets). See [Filesets](/manifest/filesets#apply-modes) for details.
 
 ### `exclude` <Badge type="tip" text="optional" />
 * Type: `Array`  

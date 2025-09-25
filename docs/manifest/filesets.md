@@ -38,6 +38,7 @@ filesets:
 - **target_path**: absolute path inside the volume (must start with `/` and cannot be `/`).
 - **exclude**: gitignore-like patterns. Directory patterns ending with `/` exclude everything under them.
 - **restart_services**: Compose service names to restart when this fileset changes.
+- **apply_mode**: how to apply file changes. See [Apply Modes](#apply-modes) below.
 
 ## Using with Compose
 
@@ -99,6 +100,91 @@ Notes:
 - Multiple filesets can target different volumes and paths.
 - Large trees are processed deterministically; paths are sorted for stable archives and hashes.
 
+## Apply Modes
+
+Filesets support two apply modes that control how files are synchronized with running containers:
+
+### Hot Mode (Default)
+
+With `apply_mode: hot` (or when `apply_mode` is not specified), Dockform syncs files while containers are running, then restarts the services listed in `restart_services`.
+
+```yaml [dockform.yaml]
+filesets:
+  nginx_config:
+    source: nginx/conf
+    target_volume: nginx_config
+    target_path: /etc/nginx
+    apply_mode: hot  # Default behavior
+    restart_services:
+      - nginx
+```
+
+**Hot mode workflow:**
+1. Sync files to volume (containers keep running)
+2. Apply application changes via `docker compose up`
+3. Restart services listed in `restart_services`
+
+This is the fastest mode and works well for most applications that can reload configuration without stopping.
+
+### Cold Mode
+
+With `apply_mode: cold`, Dockform stops the services selected as targets, syncs files, then starts those services again.
+
+```yaml [dockform.yaml]
+filesets:
+  database_config:
+    source: postgres/conf
+    target_volume: postgres_config
+    target_path: /etc/postgresql
+    apply_mode: cold
+    restart_services:
+      - postgres
+      - pgbouncer
+```
+
+**Cold mode workflow:**
+1. Stop target services
+2. Sync files to volume
+3. Start the previously stopped services
+
+Use cold mode when:
+- The application requires files to be updated only when stopped
+- File changes could corrupt running processes
+- You need atomic file updates across multiple files
+- Database configurations or other critical system files need updating
+
+::: tip
+Cold mode does nothing if no targets are set (allowed). It only changes the sync contract (no in-place updates while services are running).
+:::
+
+### Choosing the Right Mode
+
+| Scenario | Recommended Mode | Reason |
+|----------|------------------|---------|
+| Web server configs | `hot` | Can reload config via restart |
+| Static assets | `hot` | No restart needed, just file sync |
+| Database configs | `cold` | Requires clean shutdown/startup |
+| SSL certificates | `hot` | Most apps can reload certs |
+| Application binaries | `cold` | Files must not change while running |
+
+## Restart targets
+
+The `restart_services` field controls which services Dockform acts on after a fileset sync (for hot) or before/after sync (for cold).
+
+Accepted values:
+- A list of service names: `[serviceA, serviceB]`
+- The sentinel string: `attached`
+- Omitted: no restarts (targets = ∅)
+
+Resolution rules:
+- If omitted → targets = ∅ (no-op)
+- If list → targets = that list (deduped, order preserved)
+- If `attached` → Dockform discovers all services that mount `target_volume` (any path, ro/rw) and uses that set (deduped). If none found, continue without restarts.
+
+Apply flow:
+- Hot (default): sync files while services are running; if targets ≠ ∅ then restart targets.
+- Cold: if targets = ∅, do not stop/start anything (still valid); else, stop all targets → sync files → start all targets.
+
 ## Example: static site assets
 
 ::: code-group
@@ -141,4 +227,44 @@ volumes:
 
 - Run `dockform plan` to preview volume creation and fileset changes.
 - Run `dockform apply` to sync files, start/update services, and restart any listed services.
+
+## Example: application requiring cold updates
+
+Some applications require that configuration files are only updated when the container is stopped. For example, certain media management tools or databases that lock configuration files:
+
+::: code-group
+
+```yaml [dockform.yaml]
+applications:
+  media:
+    root: ./media
+
+filesets:
+  jackett:
+    source: jackett/config
+    target_volume: jackett_data
+    target_path: /config
+    apply_mode: cold
+    restart_services:
+      - jackett
+```
+
+```yaml [media/docker-compose.yaml]
+services:
+  jackett:
+    image: linuxserver/jackett
+    volumes:
+      - jackett_data:/config
+
+volumes:
+  jackett_data:
+    external: true
+```
+
+:::
+
+When you run `dockform apply`:
+1. Dockform stops the `jackett` service (target)
+2. Syncs configuration files from `jackett/config/` to the volume
+3. Starts the `jackett` service
 
