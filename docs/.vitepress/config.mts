@@ -57,6 +57,7 @@ export default {
         {
           text: 'More',
           items: [
+            { text: 'Why not X?',   link: '/more/why_not_x' },
             { text: 'Best Practices',   link: '/more/best_practices' },
             { text: 'Debugging',        link: '/more/debugging' }
           ]
