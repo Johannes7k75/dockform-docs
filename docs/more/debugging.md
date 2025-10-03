@@ -19,8 +19,9 @@ Dockform provides several diagnostic commands to help you understand what's happ
 | `dockform doctor` | Environment health check | Setup validation, troubleshooting failures |
 | `dockform manifest render` | Inspect processed manifest | Debug environment interpolation, validate structure |
 | `dockform compose render` | View resolved Compose config | Debug application-specific issues, inspect final output |
+| `--log-file` or `--verbose` | View full execution logs | Debug runtime issues |
 
-## Environment validation with `doctor`
+## Validation with `doctor`
 
 ::: info Upcoming Feature
 The `dockform doctor` command is currently in development on the [`feat/doctor` branch](https://github.com/gcstr/dockform/tree/feat/doctor) and will be available in a future release.
@@ -175,6 +176,75 @@ Both `manifest render` and `compose render` commands share common behavior patte
   $ dockform manifest render | yq eval -o=json | jq '.applications'
   ```
 
+## Logging and verbose output
+
+Dockform provides comprehensive logging capabilities to help you understand what's happening during operations and troubleshoot issues.
+
+### Verbose mode
+
+Enable verbose output to get detailed information about Dockform's operations:
+
+```bash [shell ~vscode-icons:file-type-shell~]
+# Enable verbose output for most commands
+$ dockform plan -v
+$ dockform apply --verbose
+$ dockform doctor -v
+```
+
+Verbose mode provides additional details about configuration loading and validation steps, environment variable resolution, Docker operations and API calls, file system operations, SOPS encryption/decryption processes, and error context with stack traces.
+
+### Log levels and formats
+
+Control the amount and format of log output:
+
+```bash [shell ~vscode-icons:file-type-shell~]
+# Set log level (debug, info, warn, error)
+$ dockform apply --log-level debug
+
+# Choose log format (auto, pretty, json)
+$ dockform apply --log-format json
+
+# Disable colors in output
+$ dockform apply --no-color
+```
+
+**Log levels:**
+- `debug`: Most verbose, includes internal operations and API calls
+- `info`: Standard operational messages (default)
+- `warn`: Warnings and potential issues
+- `error`: Only errors and failures
+
+**Log formats:**
+- `auto`: Automatically chooses pretty for TTY, JSON for non-TTY (default)
+- `pretty`: Human-readable colored output with timestamps
+- `json`: Structured JSON logs suitable for log aggregation systems
+
+### Writing logs to file
+
+Capture logs to a file for later analysis or sharing:
+
+```bash [shell ~vscode-icons:file-type-shell~]
+# Write JSON logs to file (in addition to stderr)
+$ dockform apply --log-file dockform.log
+
+# Combine with specific log level and format
+$ dockform plan --log-file debug.log --log-level debug --log-format json
+
+# Useful for CI/CD environments
+$ dockform apply --log-file /tmp/deployment.log --log-level info
+```
+
+The log file always uses JSON format regardless of the `--log-format` setting, making it easy to parse and analyze programmatically.
+
+::: tip Log analysis tips
+
+- **Use `jq` for JSON logs**: `cat dockform.log | jq '.level, .msg'`
+- **Filter by log level**: `cat dockform.log | jq 'select(.level == "error")'`
+- **Search for specific operations**: `grep -i "docker\|sops\|compose" dockform.log`
+- **Combine with timestamps**: JSON logs include precise timestamps for operation timing analysis
+
+:::
+
 ## Additional troubleshooting
 
 ### Docker Compose issues
@@ -195,6 +265,9 @@ For troubleshooting docker compose config errors independently:
 | **Secrets not loading** | `dockform doctor` + `dockform compose render --show-secrets` | Validate SOPS setup and check secret injection |
 | **Environment variables missing** | `dockform manifest render` | See which variables are unresolved |
 | **Compose syntax errors** | `docker compose -f <file> config` | Validate raw Compose files |
+| **Operation failures** | `dockform <cmd> -v --log-level debug` | Get detailed operation logs |
+| **CI/CD debugging** | `dockform <cmd> --log-file logs.json --no-color` | Capture structured logs for analysis |
+| **Performance issues** | `dockform <cmd> --log-level debug --log-file timing.log` | Analyze operation timing and bottlenecks |
 
 ### Common debugging workflow
 
