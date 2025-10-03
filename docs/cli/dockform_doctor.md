@@ -1,19 +1,20 @@
 ---
-title: Dockform Manifest Render
+title: Dockform Doctor
 ---
 
-# `dockform manifest render`
+# `dockform doctor`
 
-Render the manifest with environment variables interpolated
+Run a quick health scan and report system readiness for Dockform
 
 ```
-dockform manifest render [flags]
+dockform doctor [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help   help for render
+      --context string   Docker context to use (overrides active context)
+  -h, --help             help for doctor
 ```
 
 ### Options inherited from parent commands
@@ -29,5 +30,5 @@ dockform manifest render [flags]
 
 ### SEE ALSO
 
-* [dockform manifest](/cli/dockform_manifest)	 - Work with the manifest file
+* [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
 

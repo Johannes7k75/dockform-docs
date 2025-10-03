@@ -154,7 +154,7 @@ Secrets can also be global or app-specific. Root-level secrets are exposed to al
 
 > In case of conflict, application-specific secrets override global ones.
 
-Secrets are managed with [SOPS](https://github.com/getsops/sops). Dockform supports both **Age** and **PGP (GnuPG)** backends. See [Secrets Workflow](/manifest/secrets.md) for details.
+Secrets are managed with [SOPS](https://github.com/getsops/sops). Dockform supports both **Age** and **PGP (GnuPG)** backends. See [Secrets Workflow](secrets/secrets) for details.
 
 ::: code-group
 

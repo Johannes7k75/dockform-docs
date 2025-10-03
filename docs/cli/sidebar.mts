@@ -4,7 +4,6 @@
 export default [
   {
     "text": "CLI Reference",
-    "collapsed": true,
     "items": [
       {
         "text": "dockform",
@@ -28,6 +27,10 @@ export default [
           {
             "text": "destroy",
             "link": "/cli/dockform_destroy"
+          },
+          {
+            "text": "doctor",
+            "link": "/cli/dockform_doctor"
           },
           {
             "text": "init",
@@ -119,6 +122,7 @@ export default [
           }
         ]
       }
-    ]
+    ],
+    "collapsed": true
   }
 ]
