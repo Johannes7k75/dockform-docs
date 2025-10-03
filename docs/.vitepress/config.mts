@@ -31,7 +31,7 @@ export default {
     },
     search: { provider: 'local' },
     nav: [
-      { text: 'v0.4.1', link: 'https://github.com/gcstr/dockform/releases/' }
+      { text: 'v0.5.0', link: 'https://github.com/gcstr/dockform/releases/' }
     ],
     sidebar: {
       '/': [
@@ -47,7 +47,14 @@ export default {
           items: [
             { text: 'Overview',         link: '/manifest/overview' },
             { text: 'Interpolation',    link: '/manifest/interpolation' },
-            { text: 'Secrets Workflow', link: '/manifest/secrets' },
+            { 
+              text: 'Secrets',
+              link: '/manifest/secrets/secrets',
+              items: [
+                { text: 'Age', link: '/manifest/secrets/age_with_sops' },
+                { text: 'GnuPG', link: '/manifest/secrets/gpg_with_sops' },
+              ]
+            },
             { text: 'Volumes',          link: '/manifest/volumes' },
             { text: 'Networks',         link: '/manifest/networks' },
             { text: 'Filesets',         link: '/manifest/filesets' },

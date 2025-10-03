@@ -23,8 +23,12 @@ environment:
 sops:
   age:
     key_file: ${AGE_KEY_FILE}
-  recipients:
-    - age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p
+    recipients:
+      - age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p
+  pgp:
+    keyring_dir: ~/.gnupg
+    recipients:
+      - 0xDEADBEEFCAFEBABE
 
 secrets:
   sops:
@@ -150,11 +154,7 @@ Secrets can also be global or app-specific. Root-level secrets are exposed to al
 
 > In case of conflict, application-specific secrets override global ones.
 
-Secrets are managed with [SOPS](https://github.com/getsops/sops) and [Age](https://github.com/FiloSottile/age). An Age `key_file` must be available either through [variable interpolation](/manifest/interpolation) or a direct path.
-
-::: tip
-Learn more in [Secrets Workflow](/manifest/secrets.md).
-:::
+Secrets are managed with [SOPS](https://github.com/getsops/sops). Dockform supports both **Age** and **PGP (GnuPG)** backends. See [Secrets Workflow](/manifest/secrets.md) for details.
 
 ::: code-group
 
@@ -162,8 +162,8 @@ Learn more in [Secrets Workflow](/manifest/secrets.md).
 sops:
   age:
     key_file: ${AGE_KEY_FILE}
-  recipients:
-    - age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p
+  pgp:
+    keyring_dir: ~/.gnupg
 ```
 
 ```yaml [Global]
@@ -285,9 +285,9 @@ Controls which services are acted on after a fileset changes:
 
 In hot mode, targets are restarted after sync. In cold mode, targets are stopped before sync and started after.
 
-:::: tip
+::: tip
 If no targets are resolved (omitted or none attached), Dockform proceeds without restarts.
-::::
+:::
 
 ### `apply_mode` <Badge type="tip" text="optional" />
 * Type: `String`  

@@ -80,11 +80,11 @@ $ dockform compose render api --mask partial | less -R
 $ dockform compose render api --show-secrets
 ```
 
-:::: warning
+::: warning
 
 Avoid rendering secrets. Only use `--show-secrets` when absolutely necessary, and never redirect unmasked output to plain text files (e.g., `compose.debug.yml`). Prefer masked output or secure secret handling to reduce exposure risk.
 
-::::
+:::
 
 ## Tips
 

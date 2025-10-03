@@ -55,6 +55,11 @@ filesets:
 - Use root `environment.files` for shared files and app-level `environment.files` for overrides; Dockform rebases root paths to the app `root`.
 - Prefer SOPS-encrypted `.env` files for secrets. Keep keys outside of the repo and load via `${AGE_KEY_FILE}`.
 - If not using SOPS, inject secrets via CI as environment variables and pass them through Compose `environment:`.
+- Prefer storing secrets with SOPS and commit encrypted files.
+- Use `dockform doctor` to quickly audit your environment:
+  - Verifies SOPS is installed.
+  - Checks GnuPG presence and reports loopback support and agent socket when available.
+- For GPG CI/headless runners, consider SOPS GPG loopback (`pinentry_mode: loopback`) with a short‑lived passphrase from your CI secret store.
 
 <!-- ## CI/CD recommendations
 
