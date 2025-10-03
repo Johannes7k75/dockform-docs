@@ -1,0 +1,21 @@
+[38;2;34;197;94m$[0m[1m dockform doctor[0m
+Dockform Doctor — health scan
+Context: default  •  Host: unix:///var/run/docker.sock
+
+│ [38;2;34;197;94m✓[0m [38;2;59;130;246m[engine][0m Docker Engine reachable — v28.3.3
+│ [38;2;34;197;94m✓[0m [38;2;59;130;246m[context][0m Active context reachable — "default"
+│ [38;2;34;197;94m✓[0m [38;2;59;130;246m[compose][0m Docker Compose plugin — 2.39.2
+│ [38;2;34;197;94m✓[0m [38;2;59;130;246m[sops][0m SOPS present — sops 3.11.0 (latest)
+│     Note that in a future version, sops will no longer check whether the
+│     current version is the latest when asking for sops' version. If you want
+│     to explicitly check for the latest version, add the
+│     `--check-for-updates` option to `sops --version`. This will hide this
+│     deprecation warning and will always check, even if the default behavior
+│     changes in the future.
+│ [38;2;34;197;94m✓[0m [38;2;59;130;246m[helper][0m Helper image present — alpine:3.22
+│ [38;2;34;197;94m✓[0m [38;2;59;130;246m[net-perms][0m Network create/remove — ok
+│ [38;2;34;197;94m✓[0m [38;2;59;130;246m[vol-perms][0m Volume create/remove — ok
+
+Summary: 7 checks • 7 PASS, 0 WARN, 0 FAIL
+All good!
+Completed in 0.6s • exit code 0
