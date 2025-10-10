@@ -65,7 +65,9 @@ export default {
           text: 'More',
           items: [
             { text: 'Why not X?',   link: '/more/why_not_x' },
+            { text: 'Dashboard',   link: '/more/dashboard' },
             { text: 'Best Practices',   link: '/more/best_practices' },
+            { text: 'Snapshots and Restore', link: '/more/snapshots_and_restore' },
             { text: 'Debugging',        link: '/more/debugging' }
           ]
         },
