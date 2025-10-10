@@ -1,5 +1,21 @@
 import cliSidebar from '../cli/sidebar.mts'
 import { groupIconMdPlugin, groupIconVitePlugin, localIconLoader } from 'vitepress-plugin-group-icons'
+import lightbox from 'vitepress-plugin-lightbox'
+import type MarkdownIt from 'markdown-it'
+
+// Minimal local type aliases to avoid importing markdown-it internals
+type Token = {
+  type: string
+  tag?: string
+  attrs?: Array<[string, string]> | null
+  children?: Token[]
+  [k: string]: any
+}
+
+type StateCore = {
+  tokens: any
+  [k: string]: any
+}
 
 export default {
   title: 'Dockform',
@@ -8,8 +24,33 @@ export default {
   // cleanUrls: true,
   head: [['link', { rel: 'icon', href: '/img/favicon_adaptive.svg', type: 'image/svg+xml' }]],
   markdown: {
-    config(md) {
+    config(md: MarkdownIt) {
       md.use(groupIconMdPlugin)
+      // automatically mark images as zoomable by adding data-zoomable attr
+      md.core.ruler.push('add_data_zoomable', (state: StateCore) => {
+        const tokens = state.tokens as Token[]
+        for (const token of tokens) {
+          if (token.type === 'inline' && token.children) {
+            const children = token.children as Token[]
+            for (const child of children) {
+              if (child.type === 'image') {
+                // prefer attrSet when available
+                if (typeof (child as any).attrSet === 'function') {
+                  ;(child as any).attrSet('data-zoomable', '')
+                  continue
+                }
+                // fallback to manipulating attrs array
+                child.attrs = child.attrs || []
+                const has = (child.attrs as Array<[string, string]>).find((a) => a && a[0] === 'data-zoomable')
+                if (!has) (child.attrs as Array<[string, string]>).push(['data-zoomable', ''])
+              }
+            }
+          }
+        }
+      })
+
+      // Lightbox for clickable zoomable images
+      md.use(lightbox, {})
     }
   },
   vite: {

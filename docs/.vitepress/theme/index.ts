@@ -1,18 +1,14 @@
-// https://vitepress.dev/guide/custom-theme
 import { h } from 'vue'
 import type { Theme } from 'vitepress'
 import DefaultTheme from 'vitepress/theme'
+import Layout from './Layout.vue'
 import './style.css'
 import 'virtual:group-icons.css'
 
 export default {
   extends: DefaultTheme,
-  Layout: () => {
-    return h(DefaultTheme.Layout, null, {
-      // https://vitepress.dev/guide/extending-default-theme#layout-slots
-    })
-  },
-  enhanceApp({ app, router, siteData }) {
-    // ...
+  Layout,
+  enhanceApp(_ctx) {
+    // intentionally empty - keep for future enhancements
   }
 } satisfies Theme
