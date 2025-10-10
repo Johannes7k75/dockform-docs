@@ -4,7 +4,7 @@ title: Dockform Compose
 
 # `dockform compose`
 
-Work with docker compose files for applications
+Work with docker compose files for stacks
 
 ### Options
 
@@ -26,5 +26,5 @@ Work with docker compose files for applications
 ### SEE ALSO
 
 * [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
-* [dockform compose render](/cli/dockform_compose_render)	 - Render an application's docker compose config fully resolved
+* [dockform compose render](/cli/dockform_compose_render)	 - Render a stack's docker compose config fully resolved
 

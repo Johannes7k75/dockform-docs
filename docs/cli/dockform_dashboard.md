@@ -1,21 +1,19 @@
 ---
-title: Dockform Compose Render
+title: Dockform Dashboard
 ---
 
-# `dockform compose render`
+# `dockform dashboard`
 
-Render a stack's docker compose config fully resolved
+Launch the Dockform dashboard (fullscreen TUI)
 
 ```
-dockform compose render [stack] [flags]
+dockform dashboard [flags]
 ```
 
 ### Options
 
 ```
-  -h, --help           help for render
-      --mask string    Secret masking strategy: full|partial|preserve-length (default "full")
-      --show-secrets   Show secrets inline (dangerous)
+  -h, --help   help for dashboard
 ```
 
 ### Options inherited from parent commands
@@ -31,5 +29,5 @@ dockform compose render [stack] [flags]
 
 ### SEE ALSO
 
-* [dockform compose](/cli/dockform_compose)	 - Work with docker compose files for stacks
+* [dockform](/cli/dockform)	 - Manage Docker Compose projects declaratively
 

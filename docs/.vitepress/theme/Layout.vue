@@ -24,7 +24,7 @@ const createOrUpdateZoom = () => {
   // create a new instance and attach to all elements matching the selector
   zoomInstance = mediumZoom('[data-zoomable]', {
     // slightly more transparent backdrop per request
-    background: 'rgba(0,0,0,0.6)',
+    background: 'rgba(0,0,0,0.0)',
     margin: 48,
     scrollOffset: 80,
     container: document.body,
@@ -99,7 +99,7 @@ onBeforeUnmount(() => {
 
 <style>
 .medium-zoom-overlay {
-  backdrop-filter: blur(5rem);
+  backdrop-filter: blur(0.5rem);
 }
 
 .medium-zoom-overlay,

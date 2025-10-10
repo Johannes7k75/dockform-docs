@@ -22,7 +22,8 @@ Manage Docker Compose projects declaratively
 
 * [dockform apply](/cli/dockform_apply)	 - Apply the desired state
 * [dockform completion](/cli/dockform_completion)	 - Generate the autocompletion script for the specified shell
-* [dockform compose](/cli/dockform_compose)	 - Work with docker compose files for applications
+* [dockform compose](/cli/dockform_compose)	 - Work with docker compose files for stacks
+* [dockform dashboard](/cli/dockform_dashboard)	 - Launch the Dockform dashboard (fullscreen TUI)
 * [dockform destroy](/cli/dockform_destroy)	 - Destroy all managed resources
 * [dockform doctor](/cli/dockform_doctor)	 - Run a quick health scan and report system readiness for Dockform
 * [dockform init](/cli/dockform_init)	 - Create a template dockform.yml configuration file

@@ -25,6 +25,10 @@ export default [
             "collapsed": true
           },
           {
+            "text": "dashboard",
+            "link": "/cli/dockform_dashboard"
+          },
+          {
             "text": "destroy",
             "link": "/cli/dockform_destroy"
           },
