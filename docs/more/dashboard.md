@@ -4,12 +4,6 @@ title: Dashboard
 
 # Dashboard
 
-::: warning Pre-release
-
-Dashboard is vailable only on v0.6.0 RC
-
-:::
-
 Dockform includes a fullscreen terminal dashboard that gives you a live, at‑a‑glance view of your stacks, containers, and logs.
 
 ## Launching
@@ -49,8 +43,22 @@ Headers highlight the active pane with a subtle gradient. Colors are tuned for a
 - `→/l/pgdn`, `←/h/pgup` Next/previous page
 - `Tab` Cycle pane (Stacks ↔ Logs)
 - `Enter` Focus logs (from Stacks)
+- `Ctrl+P` Open command palette (Pause/Restart/Stop/Delete selected container)
 
 When filtering, type to search across stack, service, container, and image fields. Press `Esc` to leave filter mode.
+
+## Command Palette
+
+Press `Ctrl+P` to open a floating command palette centered over the dashboard. The palette shows the currently selected container and offers the following operations:
+
+![command palette](/img/commands.png)
+
+- Pause — runs `docker container pause` for the container
+- Restart — runs `docker container restart`
+- Stop — runs `docker container stop`
+- Delete — force removes the container with `docker container rm -f`
+
+Use the arrow keys to highlight a command, `Enter` to execute it, and `Esc` to close the palette without acting. If no container is selected, the palette indicates it and actions are disabled. After a command runs, the regular status polling and logs stream reflect the new container state automatically.
 
 ## What You See
 
@@ -71,6 +79,7 @@ When filtering, type to search across stack, service, container, and image field
 - Selecting an item in Stacks automatically starts tailing that container’s logs in the center pane (with a small debounce to avoid rapid restarts while navigating)
 - Press `Enter` to bring focus to the Logs pane; use the same navigation keys to scroll
 - Press `Tab` to toggle focus between Stacks and Logs
+- Command palette actions operate on the currently selected container; once Docker finishes the operation, statuses and attachments refresh on the next poll
 
 ## Data Flow and Sources
 
@@ -99,4 +108,3 @@ Under the hood, the dashboard combines static data from Compose with live inform
 - Volumes/networks are shown from the context; only attachments for the selected entry are highlighted
 
 ::: 
-
