@@ -72,7 +72,7 @@ export default {
     },
     search: { provider: 'local' },
     nav: [
-      { text: 'v0.6.0-rc.2', link: 'https://github.com/gcstr/dockform/releases/' }
+      { text: 'v0.6.0', link: 'https://github.com/gcstr/dockform/releases/' }
     ],
     sidebar: {
       '/': [
