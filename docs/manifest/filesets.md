@@ -39,6 +39,7 @@ filesets:
 - **exclude**: gitignore-like patterns. Directory patterns ending with `/` exclude everything under them.
 - **restart_services**: Compose service names to restart when this fileset changes.
 - **apply_mode**: how to apply file changes. See [Apply Modes](#apply-modes) below.
+- **ownership**: optional permissions block. See [Ownership & Permissions](#ownership--permissions).
 
 ## Using with Compose
 
@@ -185,6 +186,36 @@ Apply flow:
 - Hot (default): sync files while services are running; if targets ≠ ∅ then restart targets.
 - Cold: if targets = ∅, do not stop/start anything (still valid); else, stop all targets → sync files → start all targets.
 
+## Ownership & Permissions
+
+Filesets can enforce ownership and permission bits on the files they sync. Add an `ownership` block to opt in:
+
+```yaml [dockform.yaml]
+filesets:
+  config:
+    source: ./config
+    target_volume: app_config
+    target_path: /etc/app
+    ownership:
+      user: "1000"
+      group: "1000"
+      file_mode: "0644"
+      dir_mode: "0755"
+      preserve_existing: false
+```
+
+Supported fields:
+
+- `user`: numeric UID (recommended) or POSIX username to apply via `chown`.
+- `group`: numeric GID or POSIX group name to apply via `chgrp`.
+- `file_mode`: octal string (e.g. `"0644"` or `"600"`) applied to regular files.
+- `dir_mode`: octal string for directories (e.g. `"0755"`); skipped when unset.
+- `preserve_existing`: when `true`, only newly created or updated paths (and their parent directories) get modified; when omitted or `false`, Dockform walks the entire target subtree.
+
+Ownership runs after files finish syncing, using Dockform’s helper container (`alpine:3.22`) that mounts the target volume at `target_path`. If you supply names instead of numeric IDs, they must resolve inside that container via `getent`; otherwise Dockform logs a warning and skips the `chown` step. Numeric IDs avoid that portability issue.
+
+When `preserve_existing` is enabled, existing files keep their prior owner and mode unless they change contents. New content still receives the configured settings, so you can stage migrations incrementally. With it disabled (default) Dockform reapplies ownership and modes across the full tree on each apply to ensure drift is corrected.
+
 ## Example: static site assets
 
 ::: code-group
@@ -267,4 +298,3 @@ When you run `dockform apply`:
 1. Dockform stops the `jackett` service (target)
 2. Syncs configuration files from `jackett/config/` to the volume
 3. Starts the `jackett` service
-
