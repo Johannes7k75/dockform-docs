@@ -1,9 +1,6 @@
 ---
 title: What is Dockform?
-aside: false
 ---
-
-<img src="/img/plan.png" width=400 align="right"/>
 
 # What is Dockform?
 
@@ -12,7 +9,9 @@ It lets you manage not only your Compose applications, but also the supporting r
 
 Think of Dockform as the missing declarative layer for everything you’d otherwise configure manually with commands like `docker network create`, `docker volume create`, or ad-hoc shell scripts. All of it is written as code, stored in a manifest, and applied consistently.
 
-### Use Cases
+![dockform preview](/img/preview.png)
+
+## Use Cases
 
 Dockform is designed for simple, reproducible deployments where other heavy orchestration tools would be overkill:
 
@@ -21,7 +20,7 @@ Dockform is designed for simple, reproducible deployments where other heavy orch
 - **Small teams** – bring predictability and consistency to Docker-based workflows  
 - **Learning & prototyping** – experiment with declarative infrastructure without added complexity  
 
-### Why Dockform?
+## Why Dockform?
 
 - **Declarative by design** – describe your stack once, apply it anywhere  
 - **Git-friendly** – version-control both apps and infrastructure resources together  
